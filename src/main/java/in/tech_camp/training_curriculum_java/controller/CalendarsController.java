@@ -36,7 +36,7 @@ public class CalendarsController {
 
   // 予定の保存
   @PostMapping("/calendars")
-  public String create(@ModelAttribute("planForm") @Validated PlanForm planForm, BindingResult result) {
+  public String createPlan(@ModelAttribute("planForm") @Validated PlanForm planForm, BindingResult result) {
     if (!result.hasErrors()) {
       PlanEntity newPlan = new PlanEntity();
       newPlan.setDate(planForm.getDate());
@@ -55,7 +55,9 @@ public class CalendarsController {
     String[] wdays = {"(日)", "(月)", "(火)", "(水)", "(木)", "(金)", "(土)"};
 
     for (int x = 0; x < 7; x++) {
+
       Map<String, Object> dayMap = new HashMap<String, Object>();
+
       LocalDate currentDate = todaysDate.plusDays(x);
 
       List<String> todayPlans = new ArrayList<>();
@@ -64,6 +66,7 @@ public class CalendarsController {
               todayPlans.add(plan.getPlan());
           }
       }
+
 
   // 曜日番号を計算	day_map.put("month", currentDate.getMonthValue());
       int wdayNum = (todaysDate.getDayOfWeek().getValue() + x) % 7;
@@ -75,6 +78,7 @@ public class CalendarsController {
 
       weekDays.add(dayMap);
     }//forはここまで
+
 
     return weekDays;
   }
