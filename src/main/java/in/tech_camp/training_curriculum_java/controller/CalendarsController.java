@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CalendarsController {
 
-  private final PlanRepository planRepository;
+  private final  PlanRepository planRepository;
 
   // 1週間のカレンダーと予定が表示されるページ
   @GetMapping("/")
@@ -44,7 +44,7 @@ public class CalendarsController {
       newPlan.setPlan(planForm.getPlan());
       planRepository.insert(newPlan);
     }
-    return "redirect:/calendars";
+    return "redirect:/";
   }
 
   private List<Map<String, Object>> get_week() {
