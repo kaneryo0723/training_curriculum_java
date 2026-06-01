@@ -70,7 +70,7 @@ public class CalendarsController {
       dayMap.put("date", currentDate.getDayOfMonth());
       dayMap.put("plans", todayPlans);
 
-      weekDays.add(dayMap);
+      weekDays.add(day_map);
     }
 
     return weekDays;
